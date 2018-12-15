@@ -5,11 +5,11 @@
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="first"
               app:layout_constraintTop_toTopOf="parent"
               android:layout_marginTop="25dp" app:layout_constraintStart_toStartOf="parent"
-              android:layout_marginStart="25dp" app:layout_constraintEnd_toStartOf="@+id/item_name"
+              app:layout_constraintEnd_toStartOf="@+id/item_name"
               android:layout_marginEnd="5dp" android:id="@+id/item_count"/>
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="second"
+    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:text="second"
               app:layout_constraintTop_toTopOf="parent"
               android:layout_marginTop="25dp" android:id="@+id/item_name" app:layout_constraintEnd_toEndOf="parent"
-              android:layout_marginEnd="216dp"/>
+              app:layout_constraintStart_toEndOf="@+id/item_count"/>
 
 </android.support.constraint.ConstraintLayout>

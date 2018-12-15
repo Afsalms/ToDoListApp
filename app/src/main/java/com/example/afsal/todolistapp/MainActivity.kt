@@ -85,4 +85,5 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         recyclerView.adapter = adaptor
         println("---------------------------------------------")
     }
+
 }
