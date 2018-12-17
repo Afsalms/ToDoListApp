@@ -6,10 +6,11 @@
               app:layout_constraintTop_toTopOf="parent"
               android:layout_marginTop="25dp" app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintEnd_toStartOf="@+id/item_name"
-              android:layout_marginEnd="5dp" android:id="@+id/item_count"/>
+              android:layout_marginEnd="5dp" android:id="@+id/item_count" android:layout_marginStart="10dp"/>
     <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:text="second"
               app:layout_constraintTop_toTopOf="parent"
               android:layout_marginTop="25dp" android:id="@+id/item_name" app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintStart_toEndOf="@+id/item_count"/>
+              app:layout_constraintStart_toEndOf="@+id/item_count" app:layout_constraintBottom_toBottomOf="parent"
+              android:layout_marginBottom="10dp"/>
 
 </android.support.constraint.ConstraintLayout>

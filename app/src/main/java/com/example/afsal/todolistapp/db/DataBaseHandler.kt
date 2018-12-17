@@ -59,7 +59,7 @@ class DataBaseHandler(context: Context): SQLiteOpenHelper(context, DataBaseHandl
     fun itemList(): ArrayList<GroceryObject>{
         var groceryList = ArrayList<GroceryObject>()
         var db = this.writableDatabase
-        val query = "SELECT * from $TABLE_NAME"
+        val query = "SELECT * from $TABLE_NAME order by $ID desc"
         var cursor = db.rawQuery(query, null)
         if (cursor != null){
             cursor.moveToFirst()
