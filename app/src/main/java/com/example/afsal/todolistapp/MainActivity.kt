@@ -3,6 +3,8 @@ package com.example.afsal.todolistapp
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -62,6 +64,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         decrement.setOnClickListener(this)
         addbutton.setOnClickListener(this)
         populateGroceryList()
+        val itemTouchHelperCallback = object: ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT){
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, position: Int) {
+                println("swipe left ********************************************")
+                println("position : $position")
+                var pk = viewHolder.itemView.getTag() as Int
+                println(pk)
+                println("++++++++++++++++++++++++++++++++++++++++++++++")
+                dbhandler.deleteItem(pk)
+            }
+
+            override fun onMove(p0: RecyclerView, p1: RecyclerView.ViewHolder, p2: RecyclerView.ViewHolder): Boolean {
+                return false
+            }
+
+        }
+        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 
     fun updateText(){

@@ -75,5 +75,15 @@ class DataBaseHandler(context: Context): SQLiteOpenHelper(context, DataBaseHandl
         return groceryList
     }
 
+    fun deleteItem(primaryKey: Int){
+        val db = this.writableDatabase
+        var deleteQueryString = "DELETE from $TABLE_NAME where $ID=$primaryKey"
+        db.execSQL(deleteQueryString)
+        db.close()
+
+
+
+    }
+
 
 }

@@ -30,6 +30,8 @@ class GroceryAdaptor(var itemList : ArrayList<GroceryObject>): RecyclerView.Adap
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemName.text = itemList[position].name
         holder.itemCount.text = itemList[position].count.toString()
+        var id = itemList[position].id
+        holder.itemView.setTag(id)
 
     }
 
