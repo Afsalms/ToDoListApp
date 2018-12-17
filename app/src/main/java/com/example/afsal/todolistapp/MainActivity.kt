@@ -18,27 +18,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
     override fun onClick(v: View?) {
-        println("Clicked")
         when(v){
             increment -> {
-                println("increment button clicked")
                 numberOfItem ++
                 updateText()
 
             }
             decrement -> {
-                println("Decrement button clicked")
                 if (numberOfItem > 0){
                     numberOfItem --
                     updateText()
                 }
             }
             addbutton -> {
-                println("Add button clicked")
-
                 if (editText.text.length >0 && numberOfItem >0){
-
-
                     var item = GroceryObject()
                     item.count = numberOfItem
                     item.name = editText.text.toString()
@@ -53,7 +46,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     editText.text = null
                     numberOfItem = 0
                     updateText()
-//                    var userlist = dbhandler.itemList()
                     populateGroceryList()
                 }
 
@@ -77,13 +69,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun populateGroceryList(){
-        println("****************************************")
-
         var groceryList = dbhandler.itemList()
-        groceryList.forEach { println(it.name) }
         var adaptor = GroceryAdaptor(groceryList)
         recyclerView.adapter = adaptor
-        println("---------------------------------------------")
     }
 
 }

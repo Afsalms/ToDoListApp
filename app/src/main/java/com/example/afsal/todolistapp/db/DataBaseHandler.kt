@@ -27,9 +27,6 @@ class DataBaseHandler(context: Context): SQLiteOpenHelper(context, DataBaseHandl
                 COUNT + " INTEGER DEFAULT 0," +
                 NAME + " TEXT"+");"
 
-
-        println(create_table)
-        println("create table-----------------------------------")
         db.execSQL(create_table)
 
     }
@@ -52,9 +49,7 @@ class DataBaseHandler(context: Context): SQLiteOpenHelper(context, DataBaseHandl
             return (Integer.parseInt("$_success") != -1)
         }
         catch(e: Exception){
-            println("EEEEEEEEEEEEERRRRRRROOO")
             println(e.message)
-            println("ERRRORORORORROOR")
         }
         db.close()
         return false
