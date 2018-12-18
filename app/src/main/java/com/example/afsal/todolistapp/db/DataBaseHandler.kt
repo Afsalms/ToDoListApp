@@ -63,6 +63,10 @@ class DataBaseHandler(context: Context): SQLiteOpenHelper(context, DataBaseHandl
         var cursor = db.rawQuery(query, null)
         if (cursor != null){
             cursor.moveToFirst()
+            if(cursor.count <= 0){
+                cursor.close()
+                return groceryList
+            }
             do {
                 var item = GroceryObject()
                 item.id = Integer.parseInt(cursor.getString(cursor.getColumnIndex(ID)))
@@ -71,14 +75,6 @@ class DataBaseHandler(context: Context): SQLiteOpenHelper(context, DataBaseHandl
                 groceryList.add(item)
 
             }while(cursor.moveToNext())
-
-//            while(cursor.moveToNext()){
-//                var item = GroceryObject()
-//                item.id = Integer.parseInt(cursor.getString(cursor.getColumnIndex(ID)))
-//                item.name = cursor.getString(cursor.getColumnIndex(NAME))
-//                item.count = cursor.getInt(cursor.getColumnIndex(COUNT))
-//                groceryList.add(item)
-//            }
         }
         cursor.close()
         return groceryList
@@ -89,10 +85,5 @@ class DataBaseHandler(context: Context): SQLiteOpenHelper(context, DataBaseHandl
         var deleteQueryString = "DELETE from $TABLE_NAME where $ID=$primaryKey"
         db.execSQL(deleteQueryString)
         db.close()
-
-
-
     }
-
-
 }

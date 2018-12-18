@@ -34,9 +34,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             addbutton -> {
                 if (editText.text.length >0 && numberOfItem >0){
-                    var item = GroceryObject()
-                    item.count = numberOfItem
-                    item.name = editText.text.toString()
+                    var item = GroceryObject(count = numberOfItem, name = editText.text.toString())
                     var is_added = dbhandler.addItem(item)
                     if(is_added){
                         Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show()
@@ -67,11 +65,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         populateGroceryList()
         val itemTouchHelperCallback = object: ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, position: Int) {
-                println("swipe left ********************************************")
-                println("position : $position")
                 var pk = viewHolder.itemView.getTag() as Int
-                println(pk)
-                println("++++++++++++++++++++++++++++++++++++++++++++++")
                 dbhandler.deleteItem(pk)
             }
 
@@ -85,10 +79,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun updateText(){
+
         textView.text = numberOfItem.toString()
     }
 
     fun populateGroceryList(){
+
         var dbhandler = DataBaseHandler(this)
         var groceryList = dbhandler.itemList()
         var adaptor = GroceryAdaptor(groceryList)
