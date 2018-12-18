@@ -15,6 +15,7 @@ class GroceryAdaptor(var itemList : ArrayList<GroceryObject>): RecyclerView.Adap
     class ViewHolder(itemView:View): RecyclerView.ViewHolder(itemView){
         val itemName = itemView.item_name
         val itemCount = itemView.item_count
+        val a = itemView.setOnClickListener { println("item clicked*****************") }
 
     }
 

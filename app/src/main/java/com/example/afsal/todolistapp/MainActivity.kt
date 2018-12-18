@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     populateGroceryList()
                 }
 
+
             }
         }
     }
@@ -69,6 +70,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun populateGroceryList(){
+        var dbhandler = DataBaseHandler(this)
         var groceryList = dbhandler.itemList()
         var adaptor = GroceryAdaptor(groceryList)
         recyclerView.adapter = adaptor

@@ -63,13 +63,22 @@ class DataBaseHandler(context: Context): SQLiteOpenHelper(context, DataBaseHandl
         var cursor = db.rawQuery(query, null)
         if (cursor != null){
             cursor.moveToFirst()
-            while(cursor.moveToNext()){
+            do {
                 var item = GroceryObject()
                 item.id = Integer.parseInt(cursor.getString(cursor.getColumnIndex(ID)))
                 item.name = cursor.getString(cursor.getColumnIndex(NAME))
                 item.count = cursor.getInt(cursor.getColumnIndex(COUNT))
                 groceryList.add(item)
-            }
+
+            }while(cursor.moveToNext())
+
+//            while(cursor.moveToNext()){
+//                var item = GroceryObject()
+//                item.id = Integer.parseInt(cursor.getString(cursor.getColumnIndex(ID)))
+//                item.name = cursor.getString(cursor.getColumnIndex(NAME))
+//                item.count = cursor.getInt(cursor.getColumnIndex(COUNT))
+//                groceryList.add(item)
+//            }
         }
         cursor.close()
         return groceryList
